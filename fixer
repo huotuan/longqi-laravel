@@ -1,0 +1,12 @@
+#!/bin/sh
+modify_files=$(git status -s --no-renames -uno | grep -v 'D ' | grep -v 'resources/' | grep -v 'storage/' | grep -v 'database/' | grep '.php' | awk -F ' ' '{print $2}' | uniq | xargs)
+# echo $modify_files
+if [ "$modify_files" != "" ]; then
+	result=$(php-cs-fixer fix --config=.php_cs.dist.php  -- ${modify_files} | grep '.php')
+	echo -e $result"\n"
+	if [ -n "$result" ]; then
+		echo >&2 "代码进行了格式化，请重新提交一次吧"
+		exit 1
+	fi
+fi
+exit 0
