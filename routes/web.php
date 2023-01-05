@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::resource('index', IndexController::class);
+
+Route::get('middle', [\App\Http\Controllers\MiddleController::class, 'middle'])
+    ->middleware(['before:1,3', \App\Http\Middleware\AfterMiddle::class]);
