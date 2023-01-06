@@ -19,7 +19,7 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>mt_rand(1,3),
+            'user_id'=>mt_rand(1, 3),
             'title' => $this->faker->domainName,
             'url' => $this->faker->url,
         ];

@@ -6,10 +6,9 @@ use App\Models\Tag;
 
 class TagObserver
 {
-
     public function creating(Tag $tag)
     {
-           info('creating',[time()]);
+        info('creating', [time()]);
     }
     /**
      * Handle the Tag "created" event.
@@ -19,7 +18,7 @@ class TagObserver
      */
     public function created(Tag $tag)
     {
-       info('created',[time()]);
+        info('created', [time()]);
     }
 
     /**

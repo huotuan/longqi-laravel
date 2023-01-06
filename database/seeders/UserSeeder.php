@@ -18,9 +18,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         try {
-            User::factory(10)->create()->map(function ($post){
+            User::factory(10)->create()->map(function ($post) {
                 $post->image()->create(['url' => app(Faker::class)->url]);
-            });;
+            });
+            ;
         } catch (\Exception $exception) {
             dd($exception->getMessage());
         }

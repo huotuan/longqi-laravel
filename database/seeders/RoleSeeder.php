@@ -15,8 +15,30 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::query()->insert([
-            ''
-        ]);
+        Role::query()->create(
+            [
+            'name' => '超级管理员',
+            ]
+        );
+        Role::query()->create(
+
+            [
+                'name' => '编辑',
+            ]
+
+        );
+
+        Role::query()->create(
+
+            [
+                'name' => '普通管理员',
+            ]
+        );
+
+        Role::query()->create(
+            [
+                'name' => '测试',
+            ]
+        );
     }
 }

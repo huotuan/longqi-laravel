@@ -28,21 +28,21 @@ class AnonymousCommand extends Command
      */
     public function handle()
     {
-
-        $fn1 = function ($param){
-          $this->info($param);
+        $fn1 = function ($param) {
+            $this->info($param);
         };
-        $param2='world';
+        $param2 = 'world';
 
-        $fn2 = function ($param)use($param2){
-            $this->info($param.' '.$param2);
+        $fn2 = function ($param) use ($param2) {
+            $this->info($param . ' ' . $param2);
         };
         // php 8+
 
-        $fn3 = fn($param)=>'fn3'.$param;
+        $fn3 = fn ($param) => 'fn3' . $param;
         $fn1('hello');
         $fn2('hello');
         echo $fn3('hello');
+
         return CommandAlias::SUCCESS;
     }
 }

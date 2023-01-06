@@ -19,17 +19,17 @@ class AfterMiddle
     {
         $response = $next($request);
         $data = $response->getContent();
-        $data = json_decode($data,true);
-        $data = Str::mask($data['request_id'],'*',5);
+        $data = json_decode($data, true);
+        $data = Str::mask($data['request_id'], '*', 5);
         $response->setContent(json_encode($data));
 
-        $this->record($request,$response);
+        $this->record($request, $response);
+
         return $response;
     }
 
-
-    public function record(Request $request,$response)
+    public function record(Request $request, $response)
     {
-        info('record',[$request->all(),$request->url(),json_decode($response->getContent(),true)]);
+        info('record', [$request->all(), $request->url(), json_decode($response->getContent(), true)]);
     }
 }

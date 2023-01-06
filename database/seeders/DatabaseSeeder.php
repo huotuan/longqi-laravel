@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             TagSeeder::class,
+            UserSeeder::class,
             PostSeeder::class,
             VideoSeeder::class,
-            ImageSeeder::class,
-            CommentSeeder::class,
+            RoleSeeder::class,
+            RoleUserSeeder::class,
         ]);
     }
 }

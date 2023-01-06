@@ -30,56 +30,60 @@ class ArrayReduce extends Command
      */
     public function handle()
     {
+        $cart = ['id' => 1, 'country' => 'US'];
+        $shipping = function ($cart, \Closure $next) {
+            echo 'shipping';
+            if ($cart['country'] == 'US') {
+                $cart['shipping'] = 'SF';
+            }
 
-      $cart = ['id'=>1,'country'=>'US'];
-      $shipping = function ($cart,\Closure $next){
-         echo 'shipping';
-          if($cart['country']=='US'){
-              $cart['shipping'] = 'SF';
-          }
-          return $next($cart);
-      };
-        $point = function ($cart,\Closure $next){
+            return $next($cart);
+        };
+        $point = function ($cart, \Closure $next) {
             echo 'point';
 
-            if($cart['id']==2){
+            if ($cart['id'] == 2) {
                 $cart['point'] = 10;
             }
+
             return $next($cart);
         };
 
-        $coupon = function ($cart,\Closure $next){
+        $coupon = function ($cart, \Closure $next) {
             echo 'coupon';
 
-            if($cart['country']=='US'){
+            if ($cart['country'] == 'US') {
                 $cart['count'] = 10;
             }
+
             return $next($cart);
         };
-        $pipeline = array_reduce([$shipping,$point,$coupon],[$this,'pipeline'],function ($passable){
+        $pipeline = array_reduce([$shipping, $point, $coupon], [$this, 'pipeline'], function ($passable) {
             return $passable;
         });
 
         $cart = $pipeline($cart);
 //        $cart = (new Pipeline)->send($cart)->through([$shipping,$point,$coupon])->via('handle')->pipe($shipping)->pipe()->thenReturn();
         dump($cart);
+
         return CommandAlias::SUCCESS;
     }
 
     public function fn1($param): \Closure
     {
-         return function ()use($param){
-             $this->info($param);
-         };
+        return function () use ($param) {
+            $this->info($param);
+        };
     }
 
-   public function pipeline($stack,$pipe){
-        return function ($passable)use($stack,$pipe){
-          if(is_callable($pipe)){
-              return $pipe($passable,$stack);
-          }
+    public function pipeline($stack, $pipe)
+    {
+        return function ($passable) use ($stack, $pipe) {
+            if (is_callable($pipe)) {
+                return $pipe($passable, $stack);
+            }
 
             throw  new Exception('error');
         };
-   }
+    }
 }

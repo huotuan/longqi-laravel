@@ -3,17 +3,16 @@
 namespace App\Events;
 
 use App\Models\Tag;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
 class TagCreatedEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
@@ -22,7 +21,7 @@ class TagCreatedEvent
      */
     public function __construct(Tag $tag)
     {
-        info('tag created event',[time()]);
+        info('tag created event', [time()]);
     }
 
     /**
