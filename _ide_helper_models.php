@@ -9,11 +9,13 @@
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  */
 
+
 namespace App\Models{
 /**
  * App\Models\Comment
  *
  * @property int $id
+ * @property int $user_id
  * @property string $body
  * @property int $commentable_id
  * @property string $commentable_type
@@ -30,10 +32,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
  */
-    class Comment extends \Eloquent
-    {
-    }
+	class Comment extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -58,9 +59,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUrl($value)
  */
-    class Image extends \Eloquent
-    {
-    }
+	class Image extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -68,15 +67,15 @@ namespace App\Models{
  * App\Models\Order
  *
  * @property int $id
- * @property int|null $user_id
  * @property int $store_id
+ * @property int $user_id
  * @property string|null $order_sn
+ * @property string|null $mobile
+ * @property int $total
  * @property int $status
  * @property string|null $password
- * @property mixed|null $snapshot
- * @property string|null $options
- * @property int|null $total
- * @property string|null $mobile
+ * @property array|null $snapshot
+ * @property mixed|null $options
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -104,9 +103,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|Order withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Order withoutTrashed()
  */
-    class Order extends \Eloquent
-    {
-    }
+	class Order extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -114,7 +111,7 @@ namespace App\Models{
  * App\Models\Post
  *
  * @property int $id
- * @property int|null $user_id
+ * @property int $user_id
  * @property string $name
  * @property string $content
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -135,9 +132,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  */
-    class Post extends \Eloquent
-    {
-    }
+	class Post extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -159,9 +154,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
  */
-    class Role extends \Eloquent
-    {
-    }
+	class Role extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -185,9 +178,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|RoleUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RoleUser whereUserId($value)
  */
-    class RoleUser extends \Eloquent
-    {
-    }
+	class RoleUser extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -211,9 +202,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
-    class Tag extends \Eloquent
-    {
-    }
+	class Tag extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -248,9 +237,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
-    class User extends \Eloquent
-    {
-    }
+	class User extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -258,7 +245,7 @@ namespace App\Models{
  * App\Models\Video
  *
  * @property int $id
- * @property int|null $user_id
+ * @property int $user_id
  * @property string $title
  * @property string $url
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -278,7 +265,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUserId($value)
  */
-    class Video extends \Eloquent
-    {
-    }
+	class Video extends \Eloquent {}
 }
+

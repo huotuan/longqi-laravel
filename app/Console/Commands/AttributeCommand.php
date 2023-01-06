@@ -28,9 +28,26 @@ class AttributeCommand extends Command
      */
     public function handle()
     {
-        $this->virtual();
+        $this->appends();
 
         return Command::SUCCESS;
+    }
+
+    public function appends()
+    {
+        $order = Order::query()->where('total', '>', 0)->paginate();
+        foreach ($order->items() as $item) {
+            $item->append('total_format');
+        };
+        dump($order->toArray());
+    }
+
+
+    public function append()
+    {
+        $order = Order::query()->where('total', '>', 0)->first();
+        $order->append('total_format');
+        dump($order->toArray(), $order->total_format);
     }
 
     public function virtual()

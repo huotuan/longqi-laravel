@@ -25,13 +25,13 @@ class Order extends Model
         'snapshot' => 'json',
     ];
 
-    protected static function booted()
-    {
-        static::addGlobalScope(new StoreScope());
-        static::addGlobalScope('complete', function (Builder $builder) {
-            return $builder->where('status', 2);
-        });
-    }
+//    protected static function booted()
+//    {
+//        static::addGlobalScope(new StoreScope());
+//        static::addGlobalScope('complete', function (Builder $builder) {
+//            return $builder->where('status', 2);
+//        });
+//    }
 
     public function scopePending(Builder $query): Builder
     {
