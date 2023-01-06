@@ -17,6 +17,6 @@ class StoreScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-         $builder->where('store_id',request()->id??2);
+        $builder->where('store_id', 2);
     }
 }
