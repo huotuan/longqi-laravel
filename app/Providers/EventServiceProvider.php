@@ -28,7 +28,6 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     protected $observers = [
-        Tag::class => [TagObserver::class],
     ];
 
     /**
@@ -38,7 +37,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Tag::observe(TagObserver::class);
     }
 
     /**
