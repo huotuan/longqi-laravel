@@ -9,7 +9,6 @@
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  */
 
-
 namespace App\Models{
 /**
  * App\Models\Comment
@@ -34,7 +33,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
  */
-	class Comment extends \Eloquent {}
+    class Comment extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -59,7 +60,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Image whereUrl($value)
  */
-	class Image extends \Eloquent {}
+    class Image extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -100,10 +103,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order withLastPayAt()
  * @method static \Illuminate\Database\Query\Builder|Order withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Order withoutTrashed()
  */
-	class Order extends \Eloquent {}
+    class Order extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -132,7 +138,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  */
-	class Post extends \Eloquent {}
+    class Post extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -154,7 +162,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereUpdatedAt($value)
  */
-	class Role extends \Eloquent {}
+    class Role extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -178,7 +188,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|RoleUser whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RoleUser whereUserId($value)
  */
-	class RoleUser extends \Eloquent {}
+    class RoleUser extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -202,7 +214,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
-	class Tag extends \Eloquent {}
+    class Tag extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -220,6 +234,8 @@ namespace App\Models{
  * @property-read \App\Models\Image|null $image
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Role[] $roles
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
@@ -237,7 +253,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
-	class User extends \Eloquent {}
+    class User extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -265,6 +283,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUserId($value)
  */
-	class Video extends \Eloquent {}
+    class Video extends \Eloquent
+    {
+    }
 }
-

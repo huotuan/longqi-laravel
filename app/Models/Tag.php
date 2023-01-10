@@ -14,37 +14,6 @@ class Tag extends Model
     protected $table = 'tags';
     protected $guarded = [];
 
-    protected $dispatchesEvents = [
-        'created' => TagCreatedEvent::class,
-    ];
-
-    public static function boot()
-    {
-        parent::boot();
-        static::created(function ($model) {
-            info('boot event', [time()]);
-        });
-        static::updated(function ($model) {
-            info('boot updated event', [time()]);
-        });
-    }
-
-    public static function booted()
-    {
-        parent::booted();
-        static::created(queueable(function ($model) {
-            info('booted event', [time()]);
-        }));
-    }
-
-    public static function booting()
-    {
-        parent::booting();
-        static::created(function ($model) {
-            info('booting event', [time()]);
-        });
-    }
-
     public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'taggable');
