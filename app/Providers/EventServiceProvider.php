@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Listeners\SqlListener;
 use App\Models\Tag;
-use App\Observers\TagObserver;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Database\Events\QueryExecuted;
