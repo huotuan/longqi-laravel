@@ -30,16 +30,19 @@ class ScopeCommand extends Command
      */
     public function handle()
     {
-        dump(Order::query()->withoutGlobalScope('complete')->inRandomOrder()->pending()->ofUser(1)->limit(10)->pluck('status')->toArray());
-        dump(Order::query()->withoutGlobalScopes([StoreScope::class])->withoutGlobalScope('complete')->inRandomOrder()->ofUser(2)->limit(10)->dd());
+        Order::query()->withoutGlobalScope('complete')->inRandomOrder()->pending()->ofUser(1)
+            ->limit(10)->pluck('status')->toArray();
+        Order::query()->withoutGlobalScopes([StoreScope::class])->withoutGlobalScope('complete')
+            ->inRandomOrder()->ofUser(2)->limit(10)->dd();
 
-        dump(
-            Order::query()->withoutGlobalScopes([StoreScope::class])->inRandomOrder()->limit(10)->pluck('store_id')->toArray(),
-            Order::query()->withoutGlobalScope(StoreScope::class)->inRandomOrder()->limit(10)->pluck('store_id')->toArray(),
-            Order::query()->inRandomOrder()->limit(10)->pluck('status')->toArray(),
-            Order::query()->withoutGlobalScope('complete')->inRandomOrder()->limit(10)->pluck('status')->toArray(),
-            Order::query()->inRandomOrder()->limit(10)->pluck('store_id')->toArray(),
-        );
+        Order::query()->withoutGlobalScopes([StoreScope::class])->inRandomOrder()
+            ->limit(10)->pluck('store_id')->toArray();
+        Order::query()->withoutGlobalScope(StoreScope::class)->inRandomOrder()
+            ->limit(10)->pluck('store_id')->toArray();
+        Order::query()->inRandomOrder()->limit(10)->pluck('status')->toArray();
+        Order::query()->withoutGlobalScope('complete')->inRandomOrder()
+            ->limit(10)->pluck('status')->toArray();
+        Order::query()->inRandomOrder()->limit(10)->pluck('store_id')->toArray();
 
         return CommandAlias::SUCCESS;
     }

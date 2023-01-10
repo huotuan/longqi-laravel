@@ -20,18 +20,22 @@ class Order extends Model
     use DatetimeFormatter;
     protected $touches = [];
     protected $guarded = [];
+    protected $with = ['user'];
+    protected $appends = [
+        'total_format',
+    ];
     protected $casts = [
         'options' => JsonCast::class,
         'snapshot' => 'json',
     ];
 
-//    protected static function booted()
-//    {
-//        static::addGlobalScope(new StoreScope());
-//        static::addGlobalScope('complete', function (Builder $builder) {
-//            return $builder->where('status', 2);
-//        });
-//    }
+    protected static function booted()
+    {
+        static::addGlobalScope(new StoreScope());
+        static::addGlobalScope('complete', function (Builder $builder) {
+            return $builder->where('status', 2);
+        });
+    }
 
     public function scopePending(Builder $query): Builder
     {
@@ -56,5 +60,14 @@ class Order extends Model
         return Attribute::make(
             get:fn () => $this->getOriginal('total') == 0 ? 0.00 : $this->getOriginal('total') * 0.01,
         );
+    }
+
+    public function scopeWithLastPayAt($query)
+    {
+        $query->addSelect(['last_pay_at' => Order::query()->select('created_at')
+            ->whereColumn('user_id', 'users.id')
+            ->latest()
+            ->take(1),
+        ])->withCasts(['last_pay_at' => 'datetime']);
     }
 }

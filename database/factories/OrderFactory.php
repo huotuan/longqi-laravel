@@ -22,6 +22,7 @@ class OrderFactory extends Factory
             'user_id'=>mt_rand(1, 3),
             'store_id'=>mt_rand(1, 2),
             'status'=>mt_rand(0, 2),
+            'title'=>$this->faker->name,
             'total'=>mt_rand(1, 99999),
             'order_sn'=>$this->faker->uuid,
             'password'=>$this->faker->md5,

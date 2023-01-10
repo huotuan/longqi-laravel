@@ -17,6 +17,7 @@ return new class () extends Migration {
             $table->integer('store_id')->default(2);
             $table->integer('user_id')->default(0);
             $table->string('order_sn')->nullable();
+            $table->string('title')->nullable();
             $table->string('mobile')->nullable();
             $table->integer('total')->default(0);
             $table->tinyInteger('status')->default(1);

@@ -27,6 +27,10 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    protected $observers = [
+        Tag::class => [TagObserver::class],
+    ];
+
     /**
      * Register any events for your application.
      *

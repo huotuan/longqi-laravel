@@ -41,18 +41,17 @@ class EventCommand extends Command
 
     public function withOutEvent()
     {
+        $tag = Tag::query()->inRandomOrder()->first();
+        $tag->name .= now()->toDateTimeString();
+        $tag->saveQuietly();
 
-//        $tag = Tag::query()->inRandomOrder()->first();
-//        $tag->name .= now()->toDateTimeString();
-//        $tag->saveQuietly();
+        Tag::query()->inRandomOrder()->update(['name' => mt_rand(1, 9999)]);
+        Tag::query()->where('id', '<=')->update(['name' => mt_rand(1, 9999)]);
 
-//        $tag = Tag::query()->inRandomOrder()->update(['name'=>mt_rand(1,9999)]);
-//        $tag = Tag::query()->where('id','<=')->update(['name'=>mt_rand(1,9999)]);
-
-//        Tag::withoutEvents(function (){
-//            $tag = Tag::query()->inRandomOrder()->first();
-//            $tag->name .= now()->toDateTimeString();
-//            $tag->saveQuietly();
-//        });
+        Tag::withoutEvents(function () {
+            $tag = Tag::query()->inRandomOrder()->first();
+            $tag->name .= now()->toDateTimeString();
+            $tag->saveQuietly();
+        });
     }
 }

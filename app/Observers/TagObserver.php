@@ -10,12 +10,6 @@ class TagObserver
     {
         info('creating', [time()]);
     }
-    /**
-     * Handle the Tag "created" event.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return void
-     */
     public function created(Tag $tag)
     {
         info('created', [time()]);
@@ -51,17 +45,9 @@ class TagObserver
      */
     public function restored(Tag $tag)
     {
-        //
     }
 
-    /**
-     * Handle the Tag "force deleted" event.
-     *
-     * @param  \App\Models\Tag  $tag
-     * @return void
-     */
     public function forceDeleted(Tag $tag)
     {
-        //
     }
 }

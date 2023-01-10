@@ -6,7 +6,7 @@ use DateTimeInterface;
 
 trait DatetimeFormatter
 {
-    public function serializeDate(DateTimeInterface $data)
+    public function serializeDate(DateTimeInterface $data): string
     {
         return $data->format($this->getDateFormat());
     }
