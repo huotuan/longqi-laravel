@@ -73,21 +73,20 @@ namespace App\Models{
  * @property int $store_id
  * @property int $user_id
  * @property string|null $order_sn
+ * @property string|null $title
  * @property string|null $mobile
  * @property int $total
  * @property int $status
  * @property string|null $password
  * @property array|null $snapshot
- * @property mixed|null $options
+ * @property string|null $options
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\User|null $user
+ * @property string|null $deleted_at
  * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order ofUser($userId)
- * @method static \Illuminate\Database\Query\Builder|Order onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Order pending()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
@@ -100,12 +99,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereSnapshot($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereStoreId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereTotal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order withLastPayAt()
- * @method static \Illuminate\Database\Query\Builder|Order withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Order withoutTrashed()
  */
     class Order extends \Eloquent
     {

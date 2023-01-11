@@ -14,6 +14,7 @@ class Tag extends Model
     protected $table = 'tags';
     protected $guarded = [];
 
+
     public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'taggable');
