@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasImage
 {
-    public static function bootHasImage()
-    {
-        static::deleted(function ($model) {
-            $model->image->delete();
-        });
-    }
-
     public function image(): MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public static function booted()
+    {
+        static::deleted(function ($model) {
+            return $model->image()->delete();
+        });
     }
 }

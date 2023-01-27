@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasUser;
+use App\Models\Scopes\StoreScope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,11 +16,14 @@ class Order extends Model
     protected $table = 'orders';
     protected $casts = [
         'snapshot' => 'json',
-//                'options' => 'json',
+        'options' => 'json',
     ];
-    protected static function booted()
-    {
-    }
+
+//    public static function booted()
+//    {
+//        parent::booted();
+//        self::addGlobalScope(new StoreScope());
+//    }
 
     public function scopePending(Builder $query): Builder
     {

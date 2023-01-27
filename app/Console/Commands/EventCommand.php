@@ -30,17 +30,26 @@ class EventCommand extends Command
      */
     public function handle()
     {
-        $this->withoutEvent();
+        $this->created();
+
         return CommandAlias::SUCCESS;
     }
 
     public function created()
     {
-
+        Tag::query()->create(['name' => app(Generator::class)->name]);
     }
 
     public function withoutEvent()
     {
+        Tag::withoutEvents(function () {
+            Tag::query()->create(['name' => app(Generator::class)->name]);
+        });
 
+        $tag = Tag::query()->find(1);
+        $tag->name = '1';
+        $tag->saveQuietly();
+
+        $tag = Tag::query()->whereId(1)->update(['name' => 1]);
     }
 }

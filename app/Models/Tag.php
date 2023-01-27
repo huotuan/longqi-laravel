@@ -13,7 +13,17 @@ class Tag extends Model
     use HasFactory;
     protected $table = 'tags';
     protected $guarded = [];
+    protected $dispatchesEvents = [
+        'created' => TagCreatedEvent::class,
+    ];
 
+    public static function booted()
+    {
+        parent::booted();
+        static::created(queueable(function ($model) {
+            info(__CLASS__, [time()]);
+        }));
+    }
 
     public function posts(): MorphToMany
     {

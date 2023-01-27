@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Concerns\HasImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -12,14 +11,13 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 class Post extends Model
 {
     use HasFactory;
-    use HasImage;
     protected $table = 'posts';
     protected $guarded = [];
 
-//    public function image(): MorphOne
-//    {
-//        return $this->morphOne(Image::class, 'imageable');
-//    }
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 
     public function comments(): MorphMany
     {

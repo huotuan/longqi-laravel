@@ -35,26 +35,26 @@ class AttributeCommand extends Command
 
     public function appends()
     {
-        $order = Order::query()->where('total', '>', 0)->paginate();
-        foreach ($order->items() as $item) {
-            $item->append('total_format');
-        };
-        dump($order->toArray());
-    }
+        Order::query()->get()->each(function ($order) {
+            return $order->append('total_format');
+        });
 
+        $order = Order::query()->find(5);
+        $order->setAppends(['total_format']);
+        dump($order->total, $order->total_format, $order->toArray());
+    }
 
     public function append()
     {
-        $order = Order::query()->where('total', '>', 0)->first();
+        $order = Order::query()->find(5);
         $order->append('total_format');
-        dump($order->toArray(), $order->total_format);
+        dump($order->total, $order->total_format, $order->toArray());
     }
 
     public function virtual()
     {
-        $order = Order::query()->where('total', '>', 0)->first();
-        $order->setAppends(['total_format']);
-        dump($order->toArray(), $order->total_format);
+        $order = Order::query()->find(5);
+        dump($order->total, $order->total_format, $order->toArray());
     }
 
     public function default()

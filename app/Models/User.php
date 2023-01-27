@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Concerns\DatetimeFormatter;
+use App\Models\Concerns\HasImage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use HasImage;
     use DatetimeFormatter;
 
     /**
@@ -49,10 +51,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Image::class, 'imageable');
-    }
+//    public function image(): MorphOne
+//    {
+//        return $this->morphOne(Image::class, 'imageable');
+//    }
 
     public function roles(): BelongsToMany
     {
