@@ -29,6 +29,9 @@ class HelperCommand extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function handle()
     {
@@ -38,9 +41,7 @@ class HelperCommand extends Command
         // dump('hello',['hello','world'=>'zh']);
         // dd('hello',['hello','world'=>'zh']);
 
-        info('info', ['hello', 'world' => 'zh']);
-        logger('logger', ['hello', 'world' => 'zh']);
-        logger()->error('You are not allowed here.');
+
 
         // 辅助判断
         $blank = null;
@@ -50,15 +51,27 @@ class HelperCommand extends Command
 //        $this->info( 'blank:'.blank($blank));
 //        $this->info( 'filled:'.filled($blank));
 
-        /** 对象操作相关 */
-        // https://learnku.com/docs/laravel/9.x/facades/12208
-        // app('log')->info('app info',['hello','world'=>'zh']);
-        // app('redis')->setnx('ddd',1);
-        // echo  app('redis')->get('ddd');
-
-//        app(UserService::class)->find(1);
-//        app(PostService::class,['id'=>3])->find();
+        // app
+//        $redisKey = 'app_redis_key';
+//        app('log')->info('app info', ['hello', 'world' => 'zh']);
 //
+//        app('redis')->setnx($redisKey, 1);
+//        dump(app('redis')->get($redisKey));
+//
+//        $appCacheKey = 'app_cache_key';
+//        app('cache')->set($appCacheKey, 1);
+//        dump(app('cache')->get($appCacheKey));
+//
+//        app(UserService::class)->find(1);
+//
+//        app(PostService::class, ['id' => 3])->find();
+
+
+        // log
+//        info('info', ['hello', 'world' => 'zh']);
+//        logger('logger', ['hello', 'world' => 'zh']);
+//        logger()->error('You are not allowed here.');
+
         with(new UserService())->find(1);
         with(new PostService(4))->find();
 
